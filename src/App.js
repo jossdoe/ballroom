@@ -1,22 +1,30 @@
-import React, { useState, useEffect } from 'react';
-import { client } from './client';
+import React from 'react';
+import { useQuery, gql } from '@apollo/client';
+
+const GET_POSTS = gql`
+  query Posts {
+    blogPostCollection {
+      items {
+        title
+      }
+    }
+  }
+`;
 
 function App() {
-  useEffect(() => {
-    client
-      .getEntries({ content_type: 'blogPost' })
-      .then((response) => {
-        console.log(response.items);
-        // this.setState({
-        //     articles: response.items
-        // })
-      })
-      .catch(console.error);
-  }, []);
+  const { loading, error, data } = useQuery(GET_POSTS);
+
+  if (loading) return <p>loading...</p>;
+  if (error) return <p>{error.message}</p>;
 
   return (
-    <div className='App'>
-      <h1>Oi!</h1>
+    <div className="App">
+      <h1>Posts</h1>
+      <ul>
+        {data.blogPostCollection.items.map((post, idx) => (
+          <li key={idx}>{post.title}</li>
+        ))}
+      </ul>
     </div>
   );
 }
