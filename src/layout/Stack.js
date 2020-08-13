@@ -28,14 +28,14 @@ Stack.propTypes = {
   space: PropTypes.string,
   top: PropTypes.string,
   bottom: PropTypes.string,
-  align: PropTypes.string
+  align: PropTypes.string,
 };
 
 Stack.defaultProps = {
   space: 'none',
   top: 'none',
   bottom: 'none',
-  align: 'inherit'
+  align: 'inherit',
 };
 
 export default Stack;

@@ -1,34 +1,46 @@
 import React from 'react';
-import { useQuery, gql } from '@apollo/client';
-import Stack from './layout/Stack';
+import { Switch, Route, Redirect } from 'react-router-dom';
 
-const GET_POSTS = gql`
-  query Posts {
-    blogPostCollection {
-      items {
-        title
-      }
-    }
-  }
-`;
+import IndexPage from 'pages/IndexPage';
+import ArticlePage from 'pages/ArticlePage';
+import ReviewPage from 'pages/ReviewPage';
+import NewsPage from 'pages/NewsPage';
+import ReviewsPage from 'pages/ReviewsPage';
+import Error404 from 'pages/Error404';
+
+import { Content } from './App.styled';
+import Navbar from 'components/Navbar';
+import Footer from 'components/Footer';
 
 function App() {
-  const { loading, error, data } = useQuery(GET_POSTS);
-
-  if (loading) return <p>loading...</p>;
-  if (error) return <p>{error.message}</p>;
-
   return (
-    <div className='App'>
-      <h1>Posts</h1>
-      <ul>
-        <Stack space='l'>
-          {data.blogPostCollection.items.map((post, idx) => (
-            <li key={idx}>{post.title}</li>
-          ))}
-        </Stack>
-      </ul>
-    </div>
+    <>
+      <Navbar />
+      <Content>
+        <Switch>
+          <Route path="/news/:id">
+            <ArticlePage />
+          </Route>
+          <Route path="/reviews/:id">
+            <ReviewPage />
+          </Route>
+          <Route exact path="/news">
+            <NewsPage />
+          </Route>
+          <Route exact path="/reviews">
+            <ReviewsPage />
+          </Route>
+          <Route exact path="/">
+            <IndexPage />
+          </Route>
+          <Route path="/404">
+            <Error404 />
+          </Route>
+          <Redirect to="/404" />
+        </Switch>
+      </Content>
+      <Footer />
+    </>
   );
 }
 

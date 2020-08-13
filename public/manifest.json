@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Ballroom",
+  "name": "Music blog and reviews",
   "icons": [
     {
       "src": "favicon.ico",
