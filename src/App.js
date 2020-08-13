@@ -22,7 +22,7 @@ function App() {
     <div className='App'>
       <h1>Posts</h1>
       <ul>
-        <Stack space={20}>
+        <Stack space='l'>
           {data.blogPostCollection.items.map((post, idx) => (
             <li key={idx}>{post.title}</li>
           ))}
