@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 
 const Stack = styled.div`
   ${({ space, top, bottom, align }) => css`
-    margin-top: ${top}px;
-    margin-bottom: ${bottom}px;
+    margin-top: ${handleSize(top)};
+    margin-bottom: ${handleSize(bottom)};
     text-align: ${align};
 
     & > * {
@@ -12,22 +12,29 @@ const Stack = styled.div`
     }
 
     & > * + * {
-      margin-top: ${space}px;
+      margin-top: ${handleSize(space)};
     }
   `}
 `;
 
+const handleSize = (value) => {
+  if (value === 's') return '8px';
+  if (value === 'm') return '20px';
+  if (value === 'l') return '48px';
+  return '0px';
+};
+
 Stack.propTypes = {
-  space: PropTypes.number,
-  top: PropTypes.number,
-  bottom: PropTypes.number,
+  space: PropTypes.string,
+  top: PropTypes.string,
+  bottom: PropTypes.string,
   align: PropTypes.string
 };
 
 Stack.defaultProps = {
-  space: 0,
-  top: 0,
-  bottom: 0,
+  space: 'none',
+  top: 'none',
+  bottom: 'none',
   align: 'inherit'
 };
 
