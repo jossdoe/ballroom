@@ -18,9 +18,7 @@ const GET_NEWS = gql`
         author {
           name
         }
-        teaser {
-          json
-        }
+        teaser
         sys {
           id
           firstPublishedAt
@@ -45,7 +43,7 @@ const FeaturedNews = () => {
             headline,
             image: { url, description },
             author: { name },
-            teaser: { json },
+            teaser,
             sys: { id, firstPublishedAt },
           }) => (
             <ArticleCard
@@ -54,7 +52,7 @@ const FeaturedNews = () => {
               imageUrl={url}
               imageAlt={description}
               author={name}
-              teaser={json}
+              teaser={teaser}
               publishDate={firstPublishedAt}
             />
           )
