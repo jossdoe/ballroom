@@ -70,7 +70,6 @@ export const SiteName = styled.div`
 
 export const Menu = styled.nav`
   flex: 1;
-  text-align: right;
 
   a {
     color: inherit;
@@ -82,21 +81,58 @@ export const Menu = styled.nav`
     margin: 0;
     padding: 0;
     height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
   }
 
   li {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    height: 100%;
-    margin: 0;
-    padding: 0 40px;
+    margin: 0 0 0 15px;
+    border-radius: 6px;
+    overflow: hidden;
+    padding: 15px 40px;
     text-transform: uppercase;
     font-weight: 700;
+    font-size: 0.9rem;
+    position: relative;
+    cursor: pointer;
+  }
+
+  li::before,
+  li::after {
+    content: '';
+    display: block;
+    position: absolute;
+    background-color: ${({ theme }) => theme.secondary};
+    opacity: 0.75;
+    width: 0%;
+    height: 100%;
+    z-index: -1;
+    transition: all 0.3s;
+  }
+
+  li::before {
+    left: 0;
+    top: 0;
+  }
+
+  li::after {
+    right: 0;
+    top: 0;
   }
 
   .active,
   li:hover {
-    color: ${({ theme }) => theme.secondary};
+    color: ${({ theme }) => theme.backgroundDark};
+  }
+
+  .active li::before,
+  .active li::after,
+  li:hover::before,
+  li:hover::after {
+    width: 100%;
   }
 `;
