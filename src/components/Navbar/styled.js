@@ -85,11 +85,18 @@ export const Menu = styled.nav`
   }
 
   li {
-    display: inline-block;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
     height: 100%;
     margin: 0;
-    padding: 0;
+    padding: 0 40px;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+
+  .active,
+  li:hover {
+    color: ${({ theme }) => theme.secondary};
   }
 `;
