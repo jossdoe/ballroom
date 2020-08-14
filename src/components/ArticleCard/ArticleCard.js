@@ -1,6 +1,5 @@
 import React from 'react';
 import { Container } from './styled';
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 
 const ReviewCard = ({
   headline,
@@ -14,7 +13,7 @@ const ReviewCard = ({
     <Container>
       <h3>{headline}</h3>
       <img src={imageUrl} alt={imageAlt} />
-      {documentToReactComponents(teaser)}
+      <p>{teaser}</p>
       <small>{author}</small>
       <small>{publishDate}</small>
     </Container>
