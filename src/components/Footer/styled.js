@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 export const Container = styled.footer`
   background-color: ${({ theme }) => theme.backgroundDark}99;
-  position: absolute;
   bottom: 0;
   width: 100%;
   height: 80px;
