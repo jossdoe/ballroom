@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  width: 375px;
+  h3 {
+    margin: 0;
+  }
 `;

@@ -1,37 +1,9 @@
 import React from 'react';
-import { useQuery, gql } from '@apollo/client';
-import Loader from 'layout/Loader';
 
 import { Container } from './styled';
 import ReviewCard from 'components/ReviewCard';
 
-const GET_REVIEWS = gql`
-  query Reviews {
-    albumReviewCollection(limit: 3) {
-      items {
-        cover {
-          url(transform: { width: 375, height: 400 })
-          description
-        }
-        artist
-        title
-        genre
-        releaseDate
-        rating
-        author {
-          name
-        }
-      }
-    }
-  }
-`;
-
-const HomeReviews = () => {
-  const { loading, error, data } = useQuery(GET_REVIEWS);
-
-  if (loading) return <Loader />;
-  if (error) return <p>{error.message}</p>;
-
+const FeaturedReviews = ({ data }) => {
   return (
     <>
       <h2>Featured Reviews</h2>
@@ -43,16 +15,19 @@ const HomeReviews = () => {
             title,
             genre,
             releaseDate,
+            sys,
             rating,
             author: { name },
           }) => (
             <ReviewCard
+              key={sys.id}
               cover={url}
               alt={description}
               artist={artist}
               title={title}
               genre={genre}
               releaseDate={releaseDate}
+              publishDate={sys.firstPublishedAt}
               rating={rating}
               author={name}
             />
@@ -63,4 +38,4 @@ const HomeReviews = () => {
   );
 };
 
-export default HomeReviews;
+export default FeaturedReviews;

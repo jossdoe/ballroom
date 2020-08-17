@@ -1,5 +1,15 @@
 import React from 'react';
-import { Container } from './styled';
+import moment from 'moment';
+
+import {
+  ReleaseDate,
+  Container,
+  AlbumTitle,
+  BandName,
+  AlbumDetails,
+  Rating,
+  Meta,
+} from './styled';
 
 const ReviewCard = ({
   cover,
@@ -8,18 +18,25 @@ const ReviewCard = ({
   title,
   genre,
   releaseDate,
+  publishDate,
   rating,
   author,
 }) => {
+  const prettyPublishDate =
+    moment(publishDate).fromNow() === '4 days ago'
+      ? moment(publishDate).format('LL').replace(',', ' ')
+      : moment(publishDate).fromNow();
+  const prettyReleaseDate = moment(releaseDate).format('DD[/]MM[/]YY');
+
   return (
     <Container>
       <img src={cover} alt={alt} />
-      <p>{artist}</p>
-      <p>{title}</p>
-      <p>{genre}</p>
-      <p>{rating}/5</p>
-      <small>{releaseDate}</small>
-      <small>{author}</small>
+      <ReleaseDate>{prettyReleaseDate}</ReleaseDate>
+      <AlbumTitle>{title}</AlbumTitle>
+      <BandName>{artist}</BandName>
+      <AlbumDetails>{genre}</AlbumDetails>
+      <Rating>{rating}/5</Rating>
+      <Meta>{`by ${author} – ${prettyPublishDate}`}</Meta>
     </Container>
   );
 };
