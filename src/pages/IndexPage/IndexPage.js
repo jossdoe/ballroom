@@ -27,7 +27,7 @@ const GET_REVIEWS_AND_NEWS = gql`
         }
       }
     }
-    newsCollection {
+    newsCollection(limit: 3) {
       items {
         headline
         image {

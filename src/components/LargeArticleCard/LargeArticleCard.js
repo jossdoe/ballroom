@@ -2,7 +2,7 @@ import React from 'react';
 import moment from 'moment';
 import { Container } from './styled';
 
-const ArticleCard = ({
+const LargeArticleCard = ({
   headline,
   imageUrl,
   teaser,
@@ -29,4 +29,4 @@ const ArticleCard = ({
   );
 };
 
-export default ArticleCard;
+export default LargeArticleCard;
