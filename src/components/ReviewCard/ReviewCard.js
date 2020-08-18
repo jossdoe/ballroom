@@ -1,6 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 
+import Stars from './Stars';
 import {
   ReleaseDate,
   Container,
@@ -35,7 +36,9 @@ const ReviewCard = ({
       <AlbumTitle>{title}</AlbumTitle>
       <BandName>{artist}</BandName>
       <AlbumDetails>{genre}</AlbumDetails>
-      <Rating>{rating}/5</Rating>
+      <Rating>
+        <Stars rating={rating} />
+      </Rating>
       <Meta>{`by ${author} – ${prettyPublishDate}`}</Meta>
     </Container>
   );

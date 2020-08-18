@@ -34,20 +34,34 @@ export const ReleaseDate = styled.div`
 export const AlbumTitle = styled.h3`
   line-height: 1.5;
   font-size: 1.2rem;
-  margin-bottom: 7px;
+  margin: 0 auto 7px;
+  color: ${({ theme }) => theme.secondary};
 `;
 
 export const BandName = styled.p`
   font-weight: 700;
-  margin-bottom: 15px;
+  margin: 0 auto 15px;
 `;
 
 export const AlbumDetails = styled.p`
   font-size: 0.9rem;
+  margin: 0 auto 15px;
+  color: ${({ theme }) => theme.colorDark};
 `;
 
 export const Rating = styled.div`
   flex: 1;
+  display: flex;
+  width: 90%;
+  margin: 0 auto;
+
+  svg {
+    flex: 1;
+    width: 100%;
+  }
 `;
 
-export const Meta = styled.small``;
+export const Meta = styled.small`
+  margin: 0 auto;
+  color: ${({ theme }) => theme.colorDark};
+`;
