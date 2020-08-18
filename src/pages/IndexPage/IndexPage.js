@@ -6,7 +6,7 @@ import FeaturedReviews from 'components/FeaturedReviews';
 import Loader from 'layout/Loader';
 
 const GET_REVIEWS_AND_NEWS = gql`
-  query ReviewsAndNews {
+  query HomeReviewsAndNews {
     albumReviewCollection(limit: 5) {
       items {
         cover {
@@ -27,7 +27,7 @@ const GET_REVIEWS_AND_NEWS = gql`
         }
       }
     }
-    newsCollection(limit: 3) {
+    newsCollection(where: { featured: true }, limit: 3) {
       items {
         headline
         image {
