@@ -12,7 +12,7 @@ const SmallArticleCard = ({
   className,
 }) => {
   const prettyPublishDate =
-    moment(publishDate).fromNow() === '4 days ago'
+    moment().diff(publishDate, 'days') > 3
       ? moment(publishDate).format('LL').replace(',', ' ')
       : moment(publishDate).fromNow();
 
