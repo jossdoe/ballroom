@@ -22,8 +22,7 @@ const LargeArticleCard = ({
       <div className="news-content">
         <h3>{headline}</h3>
         <p>{teaser}</p>
-        <small>{author}</small>
-        <small>{prettyPublishDate}</small>
+        <small>{`by ${author} - ${prettyPublishDate}`}</small>
       </div>
     </Container>
   );

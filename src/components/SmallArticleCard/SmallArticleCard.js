@@ -1,6 +1,6 @@
 import React from 'react';
 import moment from 'moment';
-import { Container } from './styled';
+import { Container, NewsContent, Title, Teaser, Meta } from './styled';
 
 const SmallArticleCard = ({
   headline,
@@ -19,12 +19,11 @@ const SmallArticleCard = ({
   return (
     <Container className={className}>
       <img src={imageUrl} alt={imageAlt} />
-      <div className="news-content">
-        <h3>{headline}</h3>
-        <p>{teaser}</p>
-        <small>{author}</small>
-        <small>{prettyPublishDate}</small>
-      </div>
+      <NewsContent>
+        <Title>{headline}</Title>
+        <Teaser>{teaser}</Teaser>
+        <Meta>{`by ${author} - ${prettyPublishDate}`}</Meta>
+      </NewsContent>
     </Container>
   );
 };
