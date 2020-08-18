@@ -5,7 +5,7 @@ export const Container = styled.div`
   margin: 10px;
   box-shadow: 1px 2px 7px #00000044, 1px 2px 14px #00000044;
   border-radius: 10px;
-  width: 220px;
+  min-width: 220px;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -34,6 +34,7 @@ export const ReleaseDate = styled.div`
 export const AlbumTitle = styled.h3`
   line-height: 1.5;
   font-size: 1.2rem;
+  text-align: center;
   margin: 0 auto 7px;
   color: ${({ theme }) => theme.secondary};
 `;
