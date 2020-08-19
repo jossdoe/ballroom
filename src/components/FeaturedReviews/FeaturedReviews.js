@@ -6,7 +6,7 @@ import ReviewCard from 'components/ReviewCard';
 
 const FeaturedReviews = ({ data }) => {
   return (
-    <>
+    <div>
       <TitleFlex>
         <h2>Latest Reviews</h2>
         <aside>
@@ -41,7 +41,7 @@ const FeaturedReviews = ({ data }) => {
           )
         )}
       </Container>
-    </>
+    </div>
   );
 };
 

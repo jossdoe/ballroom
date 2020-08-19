@@ -8,7 +8,7 @@ const FeaturedNews = ({ data }) => {
   const items = data.newsCollection.items;
 
   return (
-    <>
+    <div>
       <h2>Featured News</h2>
       <Container active={true}>
         <LargeArticleCard
@@ -42,7 +42,7 @@ const FeaturedNews = ({ data }) => {
           publishDate={items[2].sys.firstPublishedAt}
         />
       </Container>
-    </>
+    </div>
   );
 };
 
