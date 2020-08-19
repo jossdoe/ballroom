@@ -24,7 +24,7 @@ const ReviewCard = ({
   author,
 }) => {
   const prettyPublishDate =
-    moment(publishDate).fromNow() === '4 days ago'
+    moment().diff(publishDate, 'days') > 3
       ? moment(publishDate).format('LL').replace(',', ' ')
       : moment(publishDate).fromNow();
   const prettyReleaseDate = moment(releaseDate).format('DD[/]MM[/]YY');
