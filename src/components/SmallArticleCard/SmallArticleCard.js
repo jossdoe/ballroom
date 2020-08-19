@@ -1,6 +1,13 @@
 import React from 'react';
 import moment from 'moment';
-import { Container, NewsContent, Title, Teaser, Meta } from './styled';
+import {
+  Container,
+  NewsContent,
+  Title,
+  Teaser,
+  Meta,
+  Highlight,
+} from './styled';
 
 const SmallArticleCard = ({
   headline,
@@ -24,6 +31,7 @@ const SmallArticleCard = ({
         <Teaser>{teaser}</Teaser>
         <Meta>{`by ${author} - ${prettyPublishDate}`}</Meta>
       </NewsContent>
+      <Highlight />
     </Container>
   );
 };
