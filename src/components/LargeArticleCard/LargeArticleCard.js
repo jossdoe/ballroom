@@ -1,6 +1,14 @@
 import React from 'react';
 import moment from 'moment';
-import { Container } from './styled';
+import {
+  Container,
+  ImageContainer,
+  Image,
+  NewsContent,
+  Title,
+  Teaser,
+  Meta,
+} from './styled';
 
 const LargeArticleCard = ({
   headline,
@@ -9,7 +17,6 @@ const LargeArticleCard = ({
   author,
   publishDate,
   imageAlt,
-  className,
 }) => {
   const prettyPublishDate =
     moment().diff(publishDate, 'days') > 3
@@ -17,13 +24,15 @@ const LargeArticleCard = ({
       : moment(publishDate).fromNow();
 
   return (
-    <Container className={className}>
-      <img src={imageUrl} alt={imageAlt} />
-      <div className="news-content">
-        <h3>{headline}</h3>
-        <p>{teaser}</p>
-        <small>{`by ${author} - ${prettyPublishDate}`}</small>
-      </div>
+    <Container>
+      <ImageContainer>
+        <Image src={imageUrl} alt={imageAlt} />
+      </ImageContainer>
+      <NewsContent>
+        <Title>{headline}</Title>
+        <Teaser>{teaser}</Teaser>
+        <Meta>{`by ${author} - ${prettyPublishDate}`}</Meta>
+      </NewsContent>
     </Container>
   );
 };
