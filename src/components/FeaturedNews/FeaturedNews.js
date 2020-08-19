@@ -1,6 +1,7 @@
 import React from 'react';
 
-import { Container } from './styled';
+import { Container, TitleFlex } from './styled';
+import { ReactComponent as RightSVG } from 'assets/icons/right.svg';
 import SmallArticleCard from 'components/SmallArticleCard';
 import LargeArticleCard from 'components/LargeArticleCard';
 
@@ -9,7 +10,13 @@ const FeaturedNews = ({ data }) => {
 
   return (
     <div>
-      <h2>Featured News</h2>
+      <TitleFlex>
+        <h2>Featured News</h2>
+        <aside>
+          More
+          <RightSVG />
+        </aside>
+      </TitleFlex>
       <Container active={true}>
         <LargeArticleCard
           key={items[0].sys.id}
