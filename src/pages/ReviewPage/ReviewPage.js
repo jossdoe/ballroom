@@ -3,6 +3,11 @@ import { useQuery, gql } from '@apollo/client';
 import { useParams } from 'react-router-dom';
 import moment from 'moment';
 
+import { ReactComponent as FacebookSVG } from 'assets/share/fb.svg';
+import { ReactComponent as TwitterSVG } from 'assets/share/tw.svg';
+import { ReactComponent as PinterestSVG } from 'assets/share/pi.svg';
+import { ReactComponent as MailSVG } from 'assets/share/mail.svg';
+
 import Loader from 'layout/Loader';
 import Stars from 'components/ReviewCard/Stars';
 import RichText from 'layout/RichText';
@@ -18,6 +23,9 @@ import {
   AuthorData,
   ReleaseDate,
   Genre,
+  ShareMenu,
+  ShareButton,
+  Options,
 } from './styled';
 
 const GET_REVIEW = (id) => gql`
@@ -100,6 +108,20 @@ const ReviewsPage = () => {
               <span>{prettyReleaseDate}</span>
             </ReleaseDate>
             <Genre>{genre}</Genre>
+            <ShareMenu>
+              <ShareButton>SHARE</ShareButton>
+              <Options>
+                <div>
+                  <FacebookSVG />
+                </div>
+                <div>
+                  <TwitterSVG />
+                </div>
+                <div>
+                  <PinterestSVG />
+                </div>
+              </Options>
+            </ShareMenu>
           </MetaData>
           <Text>
             <RichText data={content.json} />
