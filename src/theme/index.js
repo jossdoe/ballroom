@@ -25,10 +25,6 @@ export const GlobalStyles = createGlobalStyle`
     color: ${theme.color};
   }
 
-  p {
-    font-size: 1rem;
-  }
-
   h3 {
     font-size: 1.333rem;
   }

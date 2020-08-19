@@ -5,7 +5,18 @@ import moment from 'moment';
 
 import Loader from 'layout/Loader';
 import Stars from 'components/ReviewCard/Stars';
-import { Header, TitleInfo, Rating, Band, Album, ReleaseYear } from './styled';
+import RichText from 'layout/RichText';
+import {
+  Header,
+  TitleInfo,
+  Rating,
+  Band,
+  Album,
+  ContentFlex,
+  MetaData,
+  Text,
+  Empty,
+} from './styled';
 
 const GET_REVIEW = (id) => gql`
 query Review {
@@ -48,7 +59,14 @@ const ReviewsPage = () => {
   if (data) console.log(data);
 
   if (data) {
-    const { artist, title, cover, releaseDate, rating } = data.albumReview;
+    const {
+      artist,
+      title,
+      cover,
+      releaseDate,
+      rating,
+      content,
+    } = data.albumReview;
 
     return (
       <>
@@ -65,6 +83,13 @@ const ReviewsPage = () => {
             alt={`Cover of the album '${title}' by ${artist}`}
           />
         </Header>
+        <ContentFlex>
+          <MetaData></MetaData>
+          <Text>
+            <RichText data={content.json} />
+          </Text>
+          <Empty />
+        </ContentFlex>
       </>
     );
   }

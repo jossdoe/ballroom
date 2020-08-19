@@ -24,11 +24,6 @@ export const Album = styled.h1`
   font-family: 'Noto Serif';
 `;
 
-export const ReleaseYear = styled.small`
-  margin: 0;
-  color: ${({ theme }) => theme.colorDark};
-`;
-
 export const Rating = styled.div`
   display: flex;
   width: 140px;
@@ -41,4 +36,20 @@ export const Rating = styled.div`
       width: 100%;
     }
   }
+`;
+
+export const ContentFlex = styled.div`
+  display: flex;
+`;
+
+export const MetaData = styled.div`
+  flex: 1;
+`;
+
+export const Text = styled.div`
+  max-width: 600px;
+`;
+
+export const Empty = styled.div`
+  flex: 1;
 `;
