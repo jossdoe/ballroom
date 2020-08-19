@@ -9,6 +9,9 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   position: relative;
+  cursor: pointer;
+  transition: all 0.3s;
+  bottom: 0px;
 
   & > * + * {
     margin-top: 0;
@@ -18,6 +21,17 @@ export const Container = styled.div`
     width: 100%;
     border-radius: 6px;
     margin-bottom: 15px;
+  }
+
+  &:hover {
+    bottom: 5px;
+    box-shadow: 3px 7px 7px #00000033, 3px 7px 14px #00000033;
+  }
+
+  &:active {
+    transition: all 0.1s;
+    bottom: 0px;
+    box-shadow: 1px 2px 7px #00000044, 1px 2px 14px #00000044;
   }
 `;
 

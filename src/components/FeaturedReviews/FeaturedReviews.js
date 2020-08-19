@@ -1,12 +1,19 @@
 import React from 'react';
 
-import { Container } from './styled';
+import { Container, TitleFlex } from './styled';
+import { ReactComponent as RightSVG } from 'assets/icons/right.svg';
 import ReviewCard from 'components/ReviewCard';
 
 const FeaturedReviews = ({ data }) => {
   return (
-    <>
-      <h2>Featured Reviews</h2>
+    <div>
+      <TitleFlex>
+        <h2>Latest Reviews</h2>
+        <aside>
+          More
+          <RightSVG />
+        </aside>
+      </TitleFlex>
       <Container>
         {data.albumReviewCollection.items.map(
           ({
@@ -34,7 +41,7 @@ const FeaturedReviews = ({ data }) => {
           )
         )}
       </Container>
-    </>
+    </div>
   );
 };
 
