@@ -15,7 +15,9 @@ import {
   ContentFlex,
   MetaData,
   Text,
-  Empty,
+  AuthorData,
+  ReleaseDate,
+  Genre,
 } from './styled';
 
 const GET_REVIEW = (id) => gql`
@@ -66,7 +68,16 @@ const ReviewsPage = () => {
       releaseDate,
       rating,
       content,
+      author,
+      sys,
+      genre,
     } = data.albumReview;
+
+    const prettyPublishDate =
+      moment().diff(sys.firstPublishedAt, 'days') > 3
+        ? moment(sys.firstPublishedAt).format('LL').replace(',', ' ')
+        : moment(sys.firstPublishedAt).fromNow();
+    const prettyReleaseDate = moment(releaseDate).format('DD[/]MM[/]YY');
 
     return (
       <>
@@ -84,11 +95,25 @@ const ReviewsPage = () => {
           />
         </Header>
         <ContentFlex>
-          <MetaData></MetaData>
+          <MetaData>
+            <ReleaseDate>
+              <span>{prettyReleaseDate}</span>
+            </ReleaseDate>
+            <Genre>{genre}</Genre>
+          </MetaData>
           <Text>
             <RichText data={content.json} />
           </Text>
-          <Empty />
+          <AuthorData>
+            <div>
+              by <strong>{author.name}</strong>
+            </div>
+            <small>
+              published
+              <br />
+              {prettyPublishDate}
+            </small>
+          </AuthorData>
         </ContentFlex>
       </>
     );
