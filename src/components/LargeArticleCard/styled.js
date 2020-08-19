@@ -5,6 +5,7 @@ export const Container = styled.div`
   height: 100%;
   h3 {
     margin: 0;
+    font-family: 'Noto Serif', serif;
   }
   img {
     width: 100%;
