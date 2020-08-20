@@ -32,4 +32,14 @@ export const FlexContainer = styled.div`
   & > * + * {
     margin-left: 30px;
   }
+
+  @media only screen and (max-width: 992px) {
+    flex-direction: column;
+    & > * + * {
+      margin-left: 0;
+      margin-top: 30px;
+    }
+  }
+  @media only screen and (max-width: 768px) {
+  }
 `;

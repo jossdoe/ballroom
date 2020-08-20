@@ -2,6 +2,8 @@ import React from 'react';
 import moment from 'moment';
 import {
   Container,
+  ImageContainer,
+  Image,
   NewsContent,
   Title,
   Teaser,
@@ -25,7 +27,9 @@ const SmallArticleCard = ({
 
   return (
     <Container className={className}>
-      <img src={imageUrl} alt={imageAlt} />
+      <ImageContainer>
+        <Image src={imageUrl} alt={imageAlt} />
+      </ImageContainer>
       <NewsContent>
         <Title>{headline}</Title>
         <Teaser>{teaser}</Teaser>
