@@ -70,8 +70,12 @@ export const Rating = styled.div`
   width: 90%;
   margin: 0 auto;
 
-  svg {
+  & > div {
     flex: 1;
+    margin: 0 -10px;
+  }
+
+  svg {
     width: 100%;
   }
 `;

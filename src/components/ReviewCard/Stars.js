@@ -1,12 +1,8 @@
-import React, { useContext } from 'react';
-import { ThemeContext } from 'styled-components';
+import React from 'react';
 
-import { ReactComponent as DiscoSVG } from 'assets/icons/discoball.svg';
 import { ReactComponent as ShoeSVG } from 'assets/icons/shoetop.svg';
 
 const Stars = ({ rating }) => {
-  const theme = useContext(ThemeContext);
-
   return (
     <>
       {Array(rating).fill(
