@@ -120,7 +120,7 @@ export const Options = styled.div`
 
 export const ShareMenu = styled.div`
   background-color: ${({ theme }) => theme.secondary};
-  margin: 1em auto;
+  margin: 1em 0;
   height: 50px;
   width: 160px;
   border-radius: 25px;
