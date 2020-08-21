@@ -8,6 +8,12 @@ export const Wrapper = styled.div`
   right: 0;
   background-color: ${({ theme }) => theme.backgroundDark};
   z-index: 99999;
+
+  @media (max-width: 768px) {
+    position: fixed;
+    top: auto;
+    bottom: 0px;
+  }
 `;
 
 export const Container = styled.div`
@@ -17,35 +23,11 @@ export const Container = styled.div`
   max-width: 1250px;
   margin: 0 auto;
 
-  svg {
-    color: ${({ theme }) => theme.secondary};
-    height: 50px;
-  }
-`;
-
-export const Logo = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  section {
-    color: ${({ theme }) => theme.primary};
-    font-family: 'Staatliches', cursive;
-    font-size: 2rem;
-    margin-left: 15px;
+  @media (max-width: 768px) {
     position: relative;
-  }
-
-  section::after {
-    content: '';
     display: block;
-    position: absolute;
-    bottom: 2px;
-    left: 0;
-    right: 0;
-    height: 4px;
-    border-radius: 2px;
-    background-color: ${({ theme }) => theme.secondary};
+    padding: 0;
+    height: 90px;
   }
 `;
 
@@ -69,7 +51,28 @@ export const SiteName = styled.div`
   }
 `;
 
-export const Menu = styled.nav`
+export const Logo = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  svg.desktop-logo-svg {
+    color: ${({ theme }) => theme.secondary};
+    height: 50px;
+  }
+
+  @media (max-width: 768px) {
+    svg.desktop-logo-svg {
+      display: none;
+    }
+
+    ${SiteName} {
+      display: none;
+    }
+  }
+`;
+
+export const DesktopMenu = styled.nav`
   flex: 1;
 
   a {
@@ -135,5 +138,59 @@ export const Menu = styled.nav`
   li:hover::before,
   li:hover::after {
     width: 100%;
+  }
+
+  @media (max-width: 768px) {
+    display: none;
+  }
+`;
+
+export const MobileMenu = styled.nav`
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding-bottom: 15px;
+  transition: all 0.2s;
+
+  a {
+    color: inherit;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+
+  .active {
+    color: ${({ theme }) => theme.secondary};
+  }
+
+  @media (min-width: 769px) {
+    display: none;
+  }
+`;
+
+export const MobileMenuItem = styled.div`
+  flex: 1;
+  text-align: center;
+  transition: all 0.2s;
+
+  .home-button {
+    background-color: ${({ theme }) => theme.primary};
+    height: 90px;
+    width: 90px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    position: relative;
+
+    svg {
+      position: relative;
+      right: 3px;
+      bottom: 3px;
+    }
+  }
+
+  &:active {
+    transform: scale(0.85);
   }
 `;
