@@ -14,6 +14,11 @@ export const Container = styled.footer`
     max-width: 1250px;
     margin: 0 auto;
   }
+
+  @media (max-width: 768px) {
+    height: 250px;
+    padding-bottom: 150px;
+  }
 `;
 
 export const Icons = styled.div`
@@ -38,6 +43,13 @@ export const Icons = styled.div`
 
   & svg:active {
     transform: scale(0.9);
+  }
+
+  @media (max-width: 768px) {
+    & svg {
+      height: 50px;
+      margin-top: 40px;
+    }
   }
 `;
 
