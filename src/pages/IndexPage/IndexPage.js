@@ -1,6 +1,6 @@
 import React from 'react';
 import { useQuery, gql } from '@apollo/client';
-import { Container } from './styled';
+import { Container, SiteName } from './styled';
 import FeaturedNews from 'components/FeaturedNews';
 import FeaturedReviews from 'components/FeaturedReviews';
 import Loader from 'layout/Loader';
@@ -61,6 +61,9 @@ const IndexPage = () => {
 
   return (
     <Container>
+      <div style={{ textAlign: 'center' }}>
+        <SiteName>ballroom</SiteName>
+      </div>
       <FeaturedNews data={data} />
       <FeaturedReviews data={data} />
     </Container>
