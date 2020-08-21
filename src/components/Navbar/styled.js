@@ -7,6 +7,7 @@ export const Wrapper = styled.div`
   left: 0;
   right: 0;
   background-color: ${({ theme }) => theme.backgroundDark};
+  z-index: 99999;
 `;
 
 export const Container = styled.div`
