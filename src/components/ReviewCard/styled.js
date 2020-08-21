@@ -67,7 +67,7 @@ export const AlbumDetails = styled.p`
 export const Rating = styled.div`
   flex: 1;
   display: flex;
-  width: 90%;
+  width: 80%;
   margin: 0 auto;
 
   & > div {
