@@ -32,6 +32,8 @@ const GET_REVIEWS = gql`
 
 const ReviewsPage = () => {
   const { loading, error, data } = useQuery(GET_REVIEWS);
+  const { artist, title, rating, author, cover } =
+    data?.albumReviewCollection?.items[0] || {};
 
   if (loading)
     return (
@@ -45,45 +47,53 @@ const ReviewsPage = () => {
     <>
       <Header>
         <TitleInfo>
-          <Band>{data?.albumReviewCollection.items[0].artist}</Band>
-          <Album>{data?.albumReviewCollection.items[0].title}</Album>
+          <Band>{artist}</Band>
+          <Album>{title}</Album>
+          <img
+            className="mobile-image"
+            src={cover.url}
+            alt={`Cover of the album '${title}' by ${artist}`}
+          />
           <Rating>
-            <Stars rating={data?.albumReviewCollection.items[0].rating} />
+            <Stars rating={rating} />
           </Rating>
-          <Author>by {data?.albumReviewCollection.items[0].author.name}</Author>
+          <Author>by {author.name}</Author>
         </TitleInfo>
         <img
-          src={data?.albumReviewCollection.items[0].cover.url}
-          alt={`Cover of the album '${data?.albumReviewCollection.items[0].title}' by ${data?.albumReviewCollection.items[0].artist}`}
+          className="desktop-image"
+          src={cover.url}
+          alt={`Cover of the album '${title}' by ${artist}`}
         />
       </Header>
       <h2>Latest Reviews</h2>
       <Container>
-        {data?.albumReviewCollection.items.map(
-          ({
-            cover: { url, description },
-            artist,
-            title,
-            genre,
-            releaseDate,
-            sys,
-            rating,
-            author: { name },
-          }) => (
-            <ReviewCard
-              key={sys.id}
-              cover={url}
-              alt={description}
-              artist={artist}
-              title={title}
-              genre={genre}
-              releaseDate={releaseDate}
-              publishDate={sys.firstPublishedAt}
-              rating={rating}
-              author={name}
-            />
-          )
-        )}
+        {data?.albumReviewCollection.items
+          .filter((el, idx) => idx !== 0)
+          .map(
+            ({
+              cover: { url, description },
+              artist,
+              title,
+              genre,
+              releaseDate,
+              sys,
+              rating,
+              author: { name },
+            }) => (
+              <ReviewCard
+                key={sys.id}
+                cover={url}
+                alt={description}
+                artist={artist}
+                title={title}
+                genre={genre}
+                releaseDate={releaseDate}
+                publishDate={sys.firstPublishedAt}
+                rating={rating}
+                author={name}
+              />
+            )
+          )}
       </Container>
     </>
   );

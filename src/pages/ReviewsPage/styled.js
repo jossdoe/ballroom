@@ -14,10 +14,33 @@ export const Header = styled.header`
   transition: all 0.4s;
   bottom: 0px;
   box-shadow: 0px 0px 0px transparent;
+  padding: 40px;
 
   &:hover {
     box-shadow: 2px 4px 7px #00000022;
     bottom: 4px;
+  }
+
+  img.desktop-image {
+    margin: -40px -40px -40px 40px;
+  }
+
+  img.mobile-image {
+    display: none;
+  }
+
+  @media (max-width: 768px) {
+    img.desktop-image {
+      display: none;
+    }
+
+    img.mobile-image {
+      display: inline-block;
+      margin-bottom: 20px;
+      border-radius: 6px;
+      width: 100%;
+      max-width: 300px;
+    }
   }
 `;
 
