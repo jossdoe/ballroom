@@ -4,6 +4,27 @@ export const Header = styled.header`
   background-color: ${({ theme }) => theme.backgroundLight};
   margin: 40px 0 40px;
   display: flex;
+
+  img.mobile-image {
+    display: none;
+  }
+
+  @media (max-width: 768px) {
+    background-color: transparent;
+    margin: -20px 0 0;
+
+    img.desktop-image {
+      display: none;
+    }
+
+    img.mobile-image {
+      display: inline-block;
+      width: 100%;
+      max-width: 300px;
+      border-radius: 6px;
+      margin-bottom: 20px;
+    }
+  }
 `;
 
 export const TitleInfo = styled.section`
@@ -12,6 +33,7 @@ export const TitleInfo = styled.section`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin: 40px;
 `;
 
 export const Band = styled.h2`
@@ -22,6 +44,7 @@ export const Band = styled.h2`
 export const Album = styled.h1`
   margin: 0 0 20px;
   font-family: 'Noto Serif';
+  text-align: center;
 `;
 
 export const Rating = styled.div`
@@ -40,12 +63,22 @@ export const Rating = styled.div`
 
 export const ContentFlex = styled.div`
   display: flex;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
 
 export const MetaData = styled.div`
   flex: 1;
   padding: 1em;
   line-height: 1.5;
+  min-width: 200px;
+
+  @media (max-width: 768px) {
+    order: 1;
+    text-align: center;
+  }
 `;
 
 export const ReleaseDate = styled.div`
@@ -56,20 +89,48 @@ export const ReleaseDate = styled.div`
     padding: 3px 6px;
     border-radius: 6px;
   }
+
+  @media (max-width: 768px) {
+    display: inline-block;
+  }
 `;
 
 export const Genre = styled.div`
   margin: 0 0 0 6px;
+
+  span {
+    background-color: ${({ theme }) => theme.primary};
+    padding: 3px 6px;
+    border-radius: 6px;
+  }
+
+  @media (max-width: 768px) {
+    display: inline-block;
+  }
+`;
+
+export const ShareMenuContainer = styled.div`
+  @media (max-width: 768px) {
+    margin: 0 auto;
+    width: 160px;
+    text-align: center;
+  }
 `;
 
 export const Text = styled.div`
   max-width: 600px;
+
+  @media (max-width: 768px) {
+    order: 3;
+    margin: 0 auto;
+  }
 `;
 
 export const AuthorData = styled.div`
   flex: 1;
   padding: 1em;
   text-align: right;
+  min-width: 200px;
 
   & > div {
     margin-bottom: 0.5em;
@@ -77,6 +138,11 @@ export const AuthorData = styled.div`
 
   & > small {
     color: ${({ theme }) => theme.colorDark};
+  }
+
+  @media (max-width: 768px) {
+    order: 2;
+    text-align: center;
   }
 `;
 
