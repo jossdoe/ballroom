@@ -19,6 +19,7 @@ import {
   AuthorData,
   ReleaseDate,
   Genre,
+  ShareMenuContainer,
 } from './styled';
 
 const GET_REVIEW = (id) => gql`
@@ -86,11 +87,17 @@ const ReviewsPage = () => {
           <TitleInfo>
             <Band>{artist}</Band>
             <Album>{title}</Album>
+            <img
+              className="mobile-image"
+              src={cover.url}
+              alt={`Cover of the album '${title}' by ${artist}`}
+            />
             <Rating>
               <Stars rating={rating} />
             </Rating>
           </TitleInfo>
           <img
+            className="desktop-image"
             src={cover.url}
             alt={`Cover of the album '${title}' by ${artist}`}
           />
@@ -100,8 +107,12 @@ const ReviewsPage = () => {
             <ReleaseDate>
               <span>{prettyReleaseDate}</span>
             </ReleaseDate>
-            <Genre>{genre}</Genre>
-            <ShareMenu />
+            <Genre>
+              <span>{genre}</span>
+            </Genre>
+            <ShareMenuContainer>
+              <ShareMenu />
+            </ShareMenuContainer>
           </MetaData>
           <Text>
             <RichText data={content.json} />
