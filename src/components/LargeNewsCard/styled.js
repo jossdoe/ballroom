@@ -57,6 +57,10 @@ export const Container = styled.div`
   @media only screen and (max-width: 768px) {
     text-align: center;
 
+    ${ImageContainer} {
+      height: 200px;
+    }
+
     ${NewsContent} {
       display: flex;
       flex-direction: column;
