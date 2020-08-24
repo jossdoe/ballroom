@@ -56,7 +56,7 @@ query Review {
 }
 `;
 
-const ReviewsPage = () => {
+const ReviewPage = () => {
   const { id } = useParams();
   const { loading, error, data } = useQuery(GET_REVIEW(id));
   const [showFavs, setShowFavs] = useState(false);
@@ -154,4 +154,4 @@ const ReviewsPage = () => {
   }
 };
 
-export default ReviewsPage;
+export default ReviewPage;
