@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
-export const Container = styled.div``;
+export const Container = styled.div`
+  margin-bottom: 80px;
+`;
 
 export const TitleFlex = styled.div`
   display: flex;

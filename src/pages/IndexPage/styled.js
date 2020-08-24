@@ -1,10 +1,6 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
-  & > * + * {
-    margin-top: 80px;
-  }
-`;
+export const Container = styled.div``;
 
 export const SiteName = styled.div`
   display: none;

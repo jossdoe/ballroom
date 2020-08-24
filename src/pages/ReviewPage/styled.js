@@ -1,5 +1,14 @@
 import styled, { css } from 'styled-components';
 
+export const MobileImageContainer = styled.div`
+  display: none;
+  position: relative;
+
+  @media (max-width: 768px) {
+    display: inline-block;
+  }
+`;
+
 export const Header = styled.header`
   background-color: ${({ theme }) => theme.backgroundLight};
   margin: 40px 0 40px;
@@ -10,8 +19,8 @@ export const Header = styled.header`
   }
 
   @media (max-width: 768px) {
-    background-color: transparent;
-    margin: -20px 0 0;
+    border-radius: 6px;
+    margin: 0 0 0;
 
     img.desktop-image {
       display: none;
@@ -170,7 +179,18 @@ export const ReleaseDate = styled.div`
   }
 
   @media (max-width: 768px) {
-    display: inline-block;
+    display: none;
+  }
+`;
+
+export const ReleaseDateMobile = styled.div`
+  margin: 0 0 0.5em;
+  text-align: center;
+
+  span {
+    background-color: ${({ theme }) => theme.backgroundMedium};
+    padding: 3px 6px;
+    border-radius: 6px;
   }
 `;
 
@@ -184,8 +204,23 @@ export const Genre = styled.div`
   }
 
   @media (max-width: 768px) {
+    display: none;
+  }
+`;
+
+export const GenreMobile = styled.div`
+  display: none;
+  margin: 0;
+
+  span {
+    background-color: ${({ theme }) => theme.primary};
+    padding: 3px 6px;
+    border-radius: 6px;
+  }
+
+  @media (max-width: 768px) {
     display: inline-block;
-    margin: 0 0 0 6px;
+    margin: 0 0 8px;
   }
 `;
 

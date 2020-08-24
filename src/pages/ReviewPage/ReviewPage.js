@@ -21,12 +21,15 @@ import {
   Text,
   AuthorData,
   ReleaseDate,
+  ReleaseDateMobile,
   Genre,
+  GenreMobile,
   ShareMenuContainer,
   TracksButton,
   FavTracks,
   AlbumCover,
   MobileTracks,
+  MobileImageContainer,
 } from './styled';
 
 const GET_REVIEW = (id) => gql`
@@ -106,13 +109,21 @@ const ReviewPage = () => {
                 {showFavs ? <CoverSVG /> : <PlaySVG />}
               </TracksButton>
             ) : null}
+            <GenreMobile>
+              <span>{genre}</span>
+            </GenreMobile>
             <Band>{artist}</Band>
             <Album>{title}</Album>
-            <img
-              className="mobile-image"
-              src={cover.url}
-              alt={`Cover of the album '${title}' by ${artist}`}
-            />
+            <MobileImageContainer>
+              <img
+                className="mobile-image"
+                src={cover.url}
+                alt={`Cover of the album '${title}' by ${artist}`}
+              />
+              <ReleaseDateMobile>
+                <span>{prettyReleaseDate}</span>
+              </ReleaseDateMobile>
+            </MobileImageContainer>
             <Rating>
               <Stars rating={rating} />
             </Rating>
