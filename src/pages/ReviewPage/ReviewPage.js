@@ -83,6 +83,7 @@ const ReviewPage = () => {
       genre,
       tracks,
     } = data.albumReview;
+    const hasTracks = !!(tracks?.length > 0);
 
     const prettyPublishDate =
       moment().diff(sys.firstPublishedAt, 'days') > 3
@@ -93,14 +94,18 @@ const ReviewPage = () => {
     return (
       <>
         <Header>
-          <FavTracks show={showFavs}>
-            <h3>Editor's Picks</h3>
-            <SpotifyTracks tracks={tracks} />
-          </FavTracks>
+          {hasTracks ? (
+            <FavTracks show={showFavs}>
+              <h3>Editor's Picks</h3>
+              <SpotifyTracks tracks={tracks} />
+            </FavTracks>
+          ) : null}
           <TitleInfo>
-            <TracksButton onClick={() => setShowFavs(!showFavs)}>
-              {showFavs ? <CoverSVG /> : <PlaySVG />}
-            </TracksButton>
+            {hasTracks ? (
+              <TracksButton onClick={() => setShowFavs(!showFavs)}>
+                {showFavs ? <CoverSVG /> : <PlaySVG />}
+              </TracksButton>
+            ) : null}
             <Band>{artist}</Band>
             <Album>{title}</Album>
             <img
@@ -145,10 +150,12 @@ const ReviewPage = () => {
             </small>
           </AuthorData>
         </ContentFlex>
-        <MobileTracks show={showFavs}>
-          <h3>Editor's Picks</h3>
-          <SpotifyTracks tracks={tracks} />
-        </MobileTracks>
+        {hasTracks ? (
+          <MobileTracks show={showFavs}>
+            <h3>Editor's Picks</h3>
+            <SpotifyTracks tracks={tracks} />
+          </MobileTracks>
+        ) : null}
       </>
     );
   }
