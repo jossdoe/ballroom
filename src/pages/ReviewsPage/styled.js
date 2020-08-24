@@ -15,10 +15,17 @@ export const Header = styled.header`
   bottom: 0px;
   box-shadow: 0px 0px 0px transparent;
   padding: 40px;
+  cursor: pointer;
 
   &:hover {
     box-shadow: 2px 4px 7px #00000022;
     bottom: 4px;
+  }
+
+  &:active {
+    transition: all 0.1s;
+    bottom: 0px;
+    box-shadow: 0px 0px 0px transparent;
   }
 
   img.desktop-image {

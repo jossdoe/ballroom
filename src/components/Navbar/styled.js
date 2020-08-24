@@ -56,6 +56,11 @@ export const Logo = styled.div`
   align-items: center;
   justify-content: center;
 
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
   svg.desktop-logo-svg {
     color: ${({ theme }) => theme.secondary};
     height: 50px;

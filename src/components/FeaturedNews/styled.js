@@ -7,6 +7,11 @@ export const TitleFlex = styled.div`
   align-items: center;
   padding: 0 20px;
 
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
   h2 {
     flex: 1;
   }

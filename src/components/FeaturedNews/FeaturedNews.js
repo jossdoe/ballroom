@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { Link } from 'react-router-dom';
 import { Container, TitleFlex, FlexContainer } from './styled';
 import { ReactComponent as RightSVG } from 'assets/icons/right.svg';
 import SmallArticleCard from 'components/SmallArticleCard';
@@ -12,14 +12,17 @@ const FeaturedNews = ({ data }) => {
     <div>
       <TitleFlex>
         <h2>Featured News</h2>
-        <aside>
-          More
-          <RightSVG />
-        </aside>
+        <Link to="/news">
+          <aside>
+            More
+            <RightSVG />
+          </aside>
+        </Link>
       </TitleFlex>
       <Container active={true}>
         <LargeArticleCard
           key={items[0].sys.id}
+          urlId={items[0].sys.id}
           className={'article0'}
           headline={items[0].headline}
           imageUrl={items[0].image.url}
@@ -31,6 +34,7 @@ const FeaturedNews = ({ data }) => {
         <FlexContainer>
           <SmallArticleCard
             key={items[1].sys.id}
+            urlId={items[1].sys.id}
             className={'article1'}
             headline={items[1].headline}
             imageUrl={items[1].image.url}
@@ -41,6 +45,7 @@ const FeaturedNews = ({ data }) => {
           />
           <SmallArticleCard
             key={items[2].sys.id}
+            urlId={items[2].sys.id}
             className={'article2'}
             headline={items[2].headline}
             imageUrl={items[2].image.url}
@@ -50,14 +55,15 @@ const FeaturedNews = ({ data }) => {
             publishDate={items[2].sys.firstPublishedAt}
           />
           <SmallArticleCard
-            key={items[2].sys.id}
-            className={'article2'}
-            headline={items[2].headline}
-            imageUrl={items[2].image.url}
-            imageAlt={items[2].image.description}
-            author={items[2].author.name}
-            teaser={items[2].teaser}
-            publishDate={items[2].sys.firstPublishedAt}
+            key={items[3].sys.id}
+            urlId={items[3].sys.id}
+            className={'article3'}
+            headline={items[3].headline}
+            imageUrl={items[3].image.url}
+            imageAlt={items[3].image.description}
+            author={items[3].author.name}
+            teaser={items[3].teaser}
+            publishDate={items[3].sys.firstPublishedAt}
           />
         </FlexContainer>
       </Container>
