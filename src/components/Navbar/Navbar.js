@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import {
   Wrapper,
   Container,
@@ -18,8 +18,12 @@ const Navbar = () => {
     <Wrapper>
       <Container>
         <Logo>
-          <LogoSVG className="desktop-logo-svg" />
-          <SiteName>ballroom</SiteName>
+          <Link to="/">
+            <LogoSVG className="desktop-logo-svg" />
+          </Link>
+          <Link to="/">
+            <SiteName>ballroom</SiteName>
+          </Link>
         </Logo>
         <DesktopMenu>
           <ul>
