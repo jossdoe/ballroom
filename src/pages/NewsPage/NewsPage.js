@@ -1,6 +1,7 @@
 import React from 'react';
 import { useQuery, gql } from '@apollo/client';
 
+import Loader from 'layout/Loader';
 import LargeNewsCard from 'components/LargeNewsCard';
 import SmallNewsCard from 'components/SmallNewsCard';
 import { Container, GridContainer } from './styled';
@@ -53,7 +54,18 @@ const NewsPage = () => {
   const featuredNews = useQuery(GET_FEATURED_NEWS);
   const allNews = useQuery(GET_ALL_NEWS);
 
-  if (featuredNews.loading || allNews.loading) return <p>Loading..</p>;
+  if (featuredNews.loading || allNews.loading)
+    return (
+      <div
+        style={{
+          display: 'grid',
+          placeItems: 'center',
+          height: '50vh',
+        }}
+      >
+        <Loader />
+      </div>
+    );
 
   if (featuredNews.data && allNews.data) {
     const featuredItems = featuredNews.data.newsCollection.items;
