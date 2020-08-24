@@ -1,12 +1,12 @@
 import React from 'react';
 import { Container } from './styled';
 
-const SpotifyTracks = ({ tracks }) => {
+const SpotifyTracks = ({ tracks = [] }) => {
   return (
     <Container>
-      {tracks.map((track) => (
+      {tracks.slice(0, 3).map((track) => (
         <iframe
-          src="https://open.spotify.com/embed/track/7JPIRFlQL2acGnyqujDrDQ"
+          src={`https://open.spotify.com/embed/track/${track}`}
           width="250"
           height="80"
           frameborder="0"

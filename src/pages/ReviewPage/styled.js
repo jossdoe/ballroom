@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const Header = styled.header`
   background-color: ${({ theme }) => theme.backgroundLight};
@@ -27,13 +27,92 @@ export const Header = styled.header`
   }
 `;
 
+export const FavTracks = styled.section`
+  ${(props) => css`
+    overflow: hidden;
+    height: 400px;
+    width: ${props.show ? '370px' : '0px'};
+    transition: all 0.3s;
+
+    h3 {
+      text-align: center;
+      white-space: nowrap;
+      margin-top: 40px;
+    }
+
+    @media (max-width: 768px) {
+      display: none;
+    }
+  `}
+`;
+
+export const MobileTracks = styled.div`
+  display: none;
+
+  @media (max-width: 768px) {
+    display: block;
+
+    h3 {
+      text-align: center;
+    }
+  }
+`;
+
+export const AlbumCover = styled.img`
+  ${(props) => css`
+    overflow: hidden;
+    width: ${props.show ? '400px' : '0px'};
+    transition: all 0.3s;
+    object-fit: cover;
+  `}
+`;
+
+export const TracksButton = styled.button`
+  border: none;
+  height: 60px;
+  width: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  outline: none;
+  background-color: ${({ theme }) => theme.primary};
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-bottom: 20px;
+  margin-top: -60px;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  &:active {
+    transition: all 0.1s;
+    transform: scale(0.9);
+  }
+
+  svg {
+    height: 30px;
+  }
+
+  .play-svg {
+    position: relative;
+    left: 2px;
+  }
+
+  @media (max-width: 768px) {
+    display: none;
+  }
+`;
+
 export const TitleInfo = styled.section`
   flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 40px;
+  padding: 40px;
 `;
 
 export const Band = styled.h2`
@@ -96,7 +175,7 @@ export const ReleaseDate = styled.div`
 `;
 
 export const Genre = styled.div`
-  margin: 0 0 0 6px;
+  margin: 0;
 
   span {
     background-color: ${({ theme }) => theme.primary};
@@ -106,6 +185,7 @@ export const Genre = styled.div`
 
   @media (max-width: 768px) {
     display: inline-block;
+    margin: 0 0 0 6px;
   }
 `;
 
