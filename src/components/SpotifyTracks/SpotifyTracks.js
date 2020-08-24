@@ -9,11 +9,12 @@ const SpotifyTracks = ({ tracks = [] }) => {
       {cleanTracks
         ? cleanTracks.map((track) => (
             <iframe
+              key={track}
               src={`https://open.spotify.com/embed/track/${track}`}
               title={track}
               width="250"
               height="80"
-              frameborder="0"
+              frameBorder="0"
               allowtransparency="true"
               allow="encrypted-media"
             ></iframe>
