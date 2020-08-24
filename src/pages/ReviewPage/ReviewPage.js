@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useQuery, gql } from '@apollo/client';
 import { useParams } from 'react-router-dom';
 import moment from 'moment';
@@ -7,6 +7,9 @@ import ShareMenu from 'layout/ShareMenu';
 import Loader from 'layout/Loader';
 import Stars from 'components/ReviewCard/Stars';
 import RichText from 'layout/RichText';
+import SpotifyTracks from 'components/SpotifyTracks';
+import { ReactComponent as PlaySVG } from 'assets/icons/play.svg';
+import { ReactComponent as CoverSVG } from 'assets/icons/cover.svg';
 import {
   Header,
   TitleInfo,
@@ -20,6 +23,10 @@ import {
   ReleaseDate,
   Genre,
   ShareMenuContainer,
+  TracksButton,
+  FavTracks,
+  AlbumCover,
+  MobileTracks,
 } from './styled';
 
 const GET_REVIEW = (id) => gql`
@@ -40,6 +47,7 @@ query Review {
     content {
       json
     }
+    tracks
     sys {
       id
       firstPublishedAt
@@ -51,6 +59,7 @@ query Review {
 const ReviewsPage = () => {
   const { id } = useParams();
   const { loading, error, data } = useQuery(GET_REVIEW(id));
+  const [showFavs, setShowFavs] = useState(false);
 
   if (loading)
     return (
@@ -60,7 +69,6 @@ const ReviewsPage = () => {
     );
 
   if (error) console.error(error);
-  if (data) console.log(data);
 
   if (data) {
     const {
@@ -73,6 +81,7 @@ const ReviewsPage = () => {
       author,
       sys,
       genre,
+      tracks,
     } = data.albumReview;
 
     const prettyPublishDate =
@@ -84,7 +93,14 @@ const ReviewsPage = () => {
     return (
       <>
         <Header>
+          <FavTracks show={showFavs}>
+            <h3>Editor's Picks</h3>
+            <SpotifyTracks tracks={tracks} />
+          </FavTracks>
           <TitleInfo>
+            <TracksButton onClick={() => setShowFavs(!showFavs)}>
+              {showFavs ? <CoverSVG /> : <PlaySVG />}
+            </TracksButton>
             <Band>{artist}</Band>
             <Album>{title}</Album>
             <img
@@ -96,7 +112,8 @@ const ReviewsPage = () => {
               <Stars rating={rating} />
             </Rating>
           </TitleInfo>
-          <img
+          <AlbumCover
+            show={!showFavs}
             className="desktop-image"
             src={cover.url}
             alt={`Cover of the album '${title}' by ${artist}`}
@@ -128,6 +145,10 @@ const ReviewsPage = () => {
             </small>
           </AuthorData>
         </ContentFlex>
+        <MobileTracks show={showFavs}>
+          <h3>Editor's Picks</h3>
+          <SpotifyTracks tracks={tracks} />
+        </MobileTracks>
       </>
     );
   }
