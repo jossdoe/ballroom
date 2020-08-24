@@ -81,7 +81,7 @@ export const TracksButton = styled.button`
   cursor: pointer;
   transition: all 0.2s;
   margin-bottom: 20px;
-  margin-top: -60px;
+  margin-top: -40px;
 
   &:hover {
     transform: scale(1.1);
