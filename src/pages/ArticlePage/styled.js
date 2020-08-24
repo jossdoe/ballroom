@@ -10,11 +10,19 @@ export const Title = styled.h2`
   font-family: 'Noto Serif', Georgia, serif;
   font-size: 2.8rem;
   margin: 50px 0 0 0;
+
+  @media only screen and (max-width: 992px) {
+    padding: 0 2.5%;
+    font-size: 2rem;
+  }
 `;
 
 export const Teaser = styled.p`
   opacity: 0.8;
   margin: 0 0 50px 0;
+  @media only screen and (max-width: 992px) {
+    padding: 0 2.5%;
+  }
 `;
 
 export const Separator = styled.div`
@@ -29,6 +37,11 @@ export const ImageContainer = styled.div`
   height: 500px;
   width: 100%;
   padding-bottom: 20px;
+
+  @media only screen and (max-width: 768px) {
+    height: auto;
+    width: 95%;
+  }
 `;
 
 export const Image = styled.img`
@@ -47,6 +60,11 @@ export const ImageDescription = styled.small`
 export const FlexContainer = styled.div`
   margin-top: 30px;
   display: flex;
+  @media only screen and (max-width: 992px) {
+    flex-direction: column;
+  }
+  @media only screen and (max-width: 768px) {
+  }
 `;
 
 export const GridContainer = styled.div`
@@ -64,6 +82,24 @@ export const GridContainer = styled.div`
   }
 `;
 
+export const Author = styled.p`
+  margin-right: 10px;
+
+  & > span {
+    font-weight: bold;
+  }
+`;
+
+export const Publishing = styled.small`
+  text-align: right;
+  margin: 0 10px 0 0;
+
+  @media only screen and (max-width: 992px) {
+    margin: 0;
+    text-align: center;
+  }
+`;
+
 export const Meta = styled.div`
   display: flex;
   flex-direction: column;
@@ -72,8 +108,22 @@ export const Meta = styled.div`
   position: sticky;
   top: 120px;
   width: 25%;
+
+  @media only screen and (max-width: 992px) {
+    width: 100%;
+    align-items: center;
+    order: -1;
+    position: unset;
+    height: unset;
+    margin-bottom: 20px;
+  }
 `;
 
 export const Content = styled.div`
   width: 75%;
+
+  @media only screen and (max-width: 992px) {
+    width: 100%;
+    padding: 0 2.5%;
+  }
 `;
