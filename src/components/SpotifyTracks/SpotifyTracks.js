@@ -10,6 +10,7 @@ const SpotifyTracks = ({ tracks = [] }) => {
         ? cleanTracks.map((track) => (
             <iframe
               src={`https://open.spotify.com/embed/track/${track}`}
+              title={track}
               width="250"
               height="80"
               frameborder="0"
