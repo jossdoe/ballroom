@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { Link } from 'react-router-dom';
 import { Container, TitleFlex } from './styled';
 import { ReactComponent as RightSVG } from 'assets/icons/right.svg';
 import ReviewCard from 'components/ReviewCard';
@@ -9,10 +9,12 @@ const FeaturedReviews = ({ data }) => {
     <div>
       <TitleFlex>
         <h2>Latest Reviews</h2>
-        <aside>
-          More
-          <RightSVG />
-        </aside>
+        <Link to="/reviews">
+          <aside>
+            More
+            <RightSVG />
+          </aside>
+        </Link>
       </TitleFlex>
       <Container>
         {data.albumReviewCollection.items.map(

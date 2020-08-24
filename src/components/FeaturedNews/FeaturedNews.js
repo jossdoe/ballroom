@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { Link } from 'react-router-dom';
 import { Container, TitleFlex, FlexContainer } from './styled';
 import { ReactComponent as RightSVG } from 'assets/icons/right.svg';
 import SmallArticleCard from 'components/SmallArticleCard';
@@ -12,10 +12,12 @@ const FeaturedNews = ({ data }) => {
     <div>
       <TitleFlex>
         <h2>Featured News</h2>
-        <aside>
-          More
-          <RightSVG />
-        </aside>
+        <Link to="/news">
+          <aside>
+            More
+            <RightSVG />
+          </aside>
+        </Link>
       </TitleFlex>
       <Container active={true}>
         <LargeArticleCard
