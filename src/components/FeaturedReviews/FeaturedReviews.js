@@ -30,6 +30,7 @@ const FeaturedReviews = ({ data }) => {
           }) => (
             <ReviewCard
               key={sys.id}
+              urlId={sys.id}
               cover={url}
               alt={description}
               artist={artist}

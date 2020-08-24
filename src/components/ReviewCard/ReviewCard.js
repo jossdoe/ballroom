@@ -1,4 +1,5 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import moment from 'moment';
 
 import Stars from './Stars';
@@ -22,7 +23,9 @@ const ReviewCard = ({
   publishDate,
   rating,
   author,
+  urlId,
 }) => {
+  const history = useHistory();
   const prettyPublishDate =
     moment().diff(publishDate, 'days') > 3
       ? moment(publishDate).format('LL').replace(',', ' ')
@@ -30,7 +33,7 @@ const ReviewCard = ({
   const prettyReleaseDate = moment(releaseDate).format('DD[/]MM[/]YY');
 
   return (
-    <Container>
+    <Container onClick={() => history.push(`/reviews/${urlId}`)}>
       <img src={cover} alt={alt} />
       <ReleaseDate>{prettyReleaseDate}</ReleaseDate>
       <AlbumTitle>{title}</AlbumTitle>
