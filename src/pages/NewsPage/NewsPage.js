@@ -64,6 +64,7 @@ const NewsPage = () => {
         <Container>
           <LargeNewsCard
             key={featuredItems[0].sys.id}
+            urlId={featuredItems[0].sys.id}
             headline={featuredItems[0].headline}
             imageUrl={featuredItems[0].image.url}
             imageAlt={featuredItems[0].image.description}
@@ -75,6 +76,7 @@ const NewsPage = () => {
             {allItems.map((item) => (
               <SmallNewsCard
                 key={item.sys.id}
+                urlId={item.sys.id}
                 headline={item.headline}
                 imageUrl={item.image.url}
                 imageAlt={item.image.description}
