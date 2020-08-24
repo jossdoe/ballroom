@@ -7,7 +7,6 @@ import {
   Image,
   NewsContent,
   Title,
-  Teaser,
   Meta,
   Highlight,
 } from './styled';
