@@ -39,6 +39,7 @@ export const Highlight = styled.div`
 `;
 
 export const Container = styled.div`
+  flex: 1;
   display: flex;
   flex-direction: column;
   text-align: center;
