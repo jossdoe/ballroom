@@ -1,4 +1,5 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import { useQuery, gql } from '@apollo/client';
 import { Container, Author } from './styled';
 import ReviewCard from 'components/ReviewCard';
@@ -31,8 +32,9 @@ const GET_REVIEWS = gql`
 `;
 
 const ReviewsPage = () => {
+  const history = useHistory();
   const { loading, error, data } = useQuery(GET_REVIEWS);
-  const { artist, title, rating, author, cover } =
+  const { artist, title, rating, author, cover, sys } =
     data?.albumReviewCollection?.items[0] || {};
 
   if (loading)
@@ -45,7 +47,7 @@ const ReviewsPage = () => {
 
   return (
     <>
-      <Header>
+      <Header onClick={() => history.push(`/reviews/${sys.id}`)}>
         <TitleInfo>
           <Band>{artist}</Band>
           <Album>{title}</Album>
@@ -82,6 +84,7 @@ const ReviewsPage = () => {
             }) => (
               <ReviewCard
                 key={sys.id}
+                urlId={sys.id}
                 cover={url}
                 alt={description}
                 artist={artist}
