@@ -6,7 +6,6 @@ import {
   Image,
   NewsContent,
   Title,
-  Teaser,
   Meta,
   Highlight,
 } from './styled';
@@ -14,7 +13,6 @@ import {
 const SmallNewsCard = ({
   headline,
   imageUrl,
-  teaser,
   author,
   publishDate,
   imageAlt,
