@@ -14,7 +14,6 @@ import {
 const SmallNewsCard = ({
   headline,
   imageUrl,
-  teaser,
   author,
   publishDate,
   imageAlt,
