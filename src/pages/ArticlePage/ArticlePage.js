@@ -19,6 +19,8 @@ import {
   ImageDescription,
   Content,
   Separator,
+  Author,
+  Publishing,
 } from './styled';
 
 const GET_ARTICLE = (id) => gql`
@@ -121,13 +123,13 @@ const ArticlePage = () => {
           <RichText data={JSONcontent} />
         </Content>
         <Meta>
-          <p style={{ marginRight: '10px' }}>
-            by <span style={{ fontWeight: 'bold' }}>{`${authorName}`}</span>
-          </p>
-          <small style={{ textAlign: 'right', margin: '0 10px 0 0' }}>
-            {' '}
-            published <br /> {`${prettyPublishDate}`}
-          </small>
+          <Author>
+            by <span>{authorName}</span>
+          </Author>
+          <Publishing>
+            published <br />
+            {prettyPublishDate}
+          </Publishing>
           <ShareMenu />
         </Meta>
       </FlexContainer>
