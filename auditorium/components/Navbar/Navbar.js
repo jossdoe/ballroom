@@ -1,5 +1,6 @@
 import React from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 import {
   Wrapper,
   Container,
@@ -9,56 +10,78 @@ import {
   MobileMenu,
   MobileMenuItem,
 } from './styled';
-import { ReactComponent as LogoSVG } from 'assets/logo.svg';
-import { ReactComponent as NewsSVG } from 'assets/icons/news.svg';
-import { ReactComponent as ReviewsSVG } from 'assets/icons/reviews.svg';
+import LogoSVG from 'assets/logo.svg';
+import NewsSVG from 'assets/icons/news.svg';
+import ReviewsSVG from 'assets/icons/reviews.svg';
 
 const Navbar = () => {
+  const router = useRouter();
+  const getClassName = (aRoute) => {
+    if (router.pathname === aRoute) return 'active';
+    return null;
+  };
+
   return (
     <Wrapper>
       <Container>
         <Logo>
-          <Link to="/">
-            <LogoSVG className="desktop-logo-svg" />
+          <Link href="/">
+            <a>
+              <LogoSVG className="desktop-logo-svg" />
+            </a>
           </Link>
-          <Link to="/">
-            <SiteName>ballroom</SiteName>
+          <Link href="/">
+            <a>
+              <SiteName>ballroom</SiteName>
+            </a>
           </Link>
         </Logo>
         <DesktopMenu>
           <ul>
-            <NavLink exact to="/">
-              <li>Home</li>
-            </NavLink>
-            <NavLink to="/news">
-              <li>News</li>
-            </NavLink>
-            <NavLink to="/reviews">
-              <li>Reviews</li>
-            </NavLink>
+            <Link href="/">
+              <a className={getClassName('/')}>
+                <li>Home</li>
+              </a>
+            </Link>
+            <Link href="/news">
+              <a className={getClassName('/news')}>
+                <li>News</li>
+              </a>
+            </Link>
+            <Link href="/reviews">
+              <a className={getClassName('/reviews')}>
+                <li>Reviews</li>
+              </a>
+            </Link>
           </ul>
         </DesktopMenu>
         <MobileMenu>
           <MobileMenuItem>
-            <NavLink to="/news">
-              <div>
-                <NewsSVG />
-              </div>
-            </NavLink>
+            <Link href="/news">
+              <a className={getClassName('/news')}>
+                <div>
+                  <NewsSVG />
+                </div>
+              </a>
+            </Link>
           </MobileMenuItem>
           <MobileMenuItem>
-            <NavLink exact to="/">
-              <div className="home-button">
-                <LogoSVG />
-              </div>
-            </NavLink>
+            <Link href="/">
+              <a className={getClassName('/news')}>
+                <div className="home-button">
+                  <LogoSVG />
+                </div>
+              </a>
+            </Link>
           </MobileMenuItem>
           <MobileMenuItem>
-            <NavLink to="/reviews">
-              <div>
-                <ReviewsSVG />
-              </div>
-            </NavLink>
+            <Link href="/reviews">
+              <a className={getClassName('/news')}>
+                <div>
+                  <ReviewsSVG />
+                </div>
+              </a>
+            </Link>
           </MobileMenuItem>
         </MobileMenu>
       </Container>

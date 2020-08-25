@@ -1,9 +1,9 @@
 import React from 'react';
 import { Container, Icons, Copyright } from './styled';
-import { ReactComponent as FacebookSVG } from 'assets/icons/facebook.svg';
-import { ReactComponent as TwitterSVG } from 'assets/icons/twitter.svg';
-import { ReactComponent as InstagramSVG } from 'assets/icons/instagram.svg';
-import { ReactComponent as SpotifySVG } from 'assets/icons/spotify.svg';
+import FacebookSVG from 'assets/icons/facebook.svg';
+import TwitterSVG from 'assets/icons/twitter.svg';
+import InstagramSVG from 'assets/icons/instagram.svg';
+import SpotifySVG from 'assets/icons/spotify.svg';
 
 const Footer = () => {
   return (

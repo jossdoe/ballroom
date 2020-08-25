@@ -1,4 +1,3 @@
-import React from 'react';
 import useGQL from 'hooks/useGQL';
 import { Container, SiteName } from 'styles/pages/IndexPage';
 import FeaturedNews from 'components/FeaturedNews';
@@ -53,11 +52,13 @@ const IndexPage = () => {
 
   if (loading)
     return (
-      <Container
-        style={{ display: 'grid', placeItems: 'center', height: '50vh' }}
-      >
-        <Loader />
-      </Container>
+      <Layout>
+        <Container
+          style={{ display: 'grid', placeItems: 'center', height: '50vh' }}
+        >
+          <Loader />
+        </Container>
+      </Layout>
     );
 
   if (error) return <p>{error.message + 'you dumb fuck'}</p>;

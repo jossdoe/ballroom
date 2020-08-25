@@ -10,21 +10,23 @@ const useGQL = (
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch(url, {
-      method: 'POST',
-      headers: {
-        Authorization: 'Bearer S59pgvtqOoS2UaFMsWeplWOAi2fFV2J3PMQhluTDDxI',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ query }),
-    })
-      .then((res) => res.json())
-      .then((res) => {
-        setData(res.data);
-        setLoading(false);
+    if (!query.includes('undefined')) {
+      fetch(url, {
+        method: 'POST',
+        headers: {
+          Authorization: 'Bearer S59pgvtqOoS2UaFMsWeplWOAi2fFV2J3PMQhluTDDxI',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ query }),
       })
-      .catch((err) => setError(err));
-  }, []);
+        .then((res) => res.json())
+        .then((res) => {
+          setData(res.data);
+          setLoading(false);
+        })
+        .catch((err) => setError(err));
+    }
+  }, [query]);
 
   return { data, loading, error };
 };

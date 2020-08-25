@@ -1,12 +1,16 @@
 import React from 'react';
 import Head from 'next/head';
+import { GlobalStyles } from 'styles';
 import { Content } from './styled';
+import Navbar from 'components/Navbar';
+import Footer from 'components/Footer';
 
 const Layout = ({ children, title = 'ballroom' }) => (
   <>
+    <GlobalStyles />
     <Head>
       <title>{title}</title>
-      <meta charset="utf-8" />
+      <meta charSet="utf-8" />
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       <link
         href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,400;0,700;1,400;1,700&display=swap"
@@ -21,7 +25,9 @@ const Layout = ({ children, title = 'ballroom' }) => (
         rel="stylesheet"
       />
     </Head>
+    <Navbar />
     <Content>{children}</Content>
+    <Footer />
   </>
 );
 

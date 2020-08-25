@@ -1,5 +1,5 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
+import { useRouter } from 'next/router';
 import moment from 'moment';
 import {
   Container,
@@ -20,7 +20,7 @@ const SmallNewsCard = ({
   className,
   urlId,
 }) => {
-  const history = useHistory();
+  const router = useRouter();
   const prettyPublishDate =
     moment().diff(publishDate, 'days') > 3
       ? moment(publishDate).format('LL').replace(',', ' ')
@@ -29,7 +29,7 @@ const SmallNewsCard = ({
   return (
     <Container
       className={className}
-      onClick={() => history.push(`/news/${urlId}`)}
+      onClick={() => router.push(`/news/${urlId}`)}
     >
       <ImageContainer>
         <Image src={imageUrl} alt={imageAlt} />

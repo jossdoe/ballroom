@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { ReactComponent as FacebookSVG } from 'assets/share/fb.svg';
-import { ReactComponent as TwitterSVG } from 'assets/share/tw.svg';
-import { ReactComponent as PinterestSVG } from 'assets/share/pi.svg';
+import FacebookSVG from 'assets/share/fb.svg';
+import TwitterSVG from 'assets/share/tw.svg';
+import PinterestSVG from 'assets/share/pi.svg';
 
 export const ShareButton = styled.div`
   background-color: ${({ theme }) => theme.primary};
