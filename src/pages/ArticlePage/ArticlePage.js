@@ -155,6 +155,7 @@ const ArticlePage = () => {
               imageAlt={item.image.description}
               author={item.author.name}
               publishDate={item.sys.firstPublishedAt}
+              urlId={item.sys.id}
             />
           ))}
       </GridContainer>
