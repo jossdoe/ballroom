@@ -154,6 +154,7 @@ const ArticlePage = () => {
             moreNewsData.newsCollection.items.map((item) => (
               <SmallNewsCard
                 key={item.sys.id}
+                urlId={item.sys.id}
                 headline={item.headline}
                 imageUrl={item.image.url}
                 imageAlt={item.image.description}

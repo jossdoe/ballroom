@@ -67,7 +67,7 @@ const Navbar = () => {
           </MobileMenuItem>
           <MobileMenuItem>
             <Link href="/">
-              <a className={getClassName('/news')}>
+              <a className={getClassName('/')}>
                 <div className="home-button">
                   <LogoSVG />
                 </div>
@@ -76,7 +76,7 @@ const Navbar = () => {
           </MobileMenuItem>
           <MobileMenuItem>
             <Link href="/reviews">
-              <a className={getClassName('/news')}>
+              <a className={getClassName('/reviews')}>
                 <div>
                   <ReviewsSVG />
                 </div>
