@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-// api creds totally exposed, yikes, sorry fey
+// api creds totally exposed, yikes, sorry fey (:
 const useGQL = (
   query,
   url = 'https://graphql.contentful.com/content/v1/spaces/geppoz0ltnws'
