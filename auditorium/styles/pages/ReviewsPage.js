@@ -32,6 +32,8 @@ export const Header = styled.header`
     display: none;
   }
   @media (max-width: 768px) {
+    text-align: center;
+
     img.desktop-image {
       display: none;
     }
