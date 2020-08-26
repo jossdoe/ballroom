@@ -35,7 +35,7 @@ export const Meta = styled.small``;
 
 export const Container = styled.div`
   display: flex;
-  margin: 10px 10px 40px;
+  margin: 40px 10px 40px;
   background-color: ${({ theme }) => theme.backgroundLight};
   &:hover {
     cursor: pointer;
