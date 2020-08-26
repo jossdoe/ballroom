@@ -56,7 +56,7 @@ const NewsPage = () => {
 
   if (featuredNews.loading || allNews.loading)
     return (
-      <Layout>
+      <Layout title="news">
         <div
           style={{
             display: 'grid',
@@ -72,9 +72,12 @@ const NewsPage = () => {
   if (featuredNews.data && allNews.data) {
     const featuredItems = featuredNews.data.newsCollection.items;
     const allItems = allNews.data.newsCollection.items;
+    const latestNews = allItems.filter(
+      (item) => item.sys.id !== featuredItems[0].sys.id
+    );
 
     return (
-      <Layout>
+      <Layout title="news">
         <Container>
           <LargeNewsCard
             key={featuredItems[0].sys.id}
@@ -87,7 +90,7 @@ const NewsPage = () => {
             publishDate={featuredItems[0].sys.firstPublishedAt}
           />
           <GridContainer>
-            {allItems.map((item) => (
+            {latestNews.map((item) => (
               <SmallNewsCard
                 key={item.sys.id}
                 urlId={item.sys.id}

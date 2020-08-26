@@ -68,7 +68,7 @@ const ReviewPage = () => {
 
   if (loading)
     return (
-      <Layout>
+      <Layout title="loading ...">
         <div style={{ display: 'grid', placeItems: 'center', height: '50vh' }}>
           <Loader />
         </div>
@@ -99,7 +99,7 @@ const ReviewPage = () => {
     const prettyReleaseDate = moment(releaseDate).format('DD[/]MM[/]YY');
 
     return (
-      <Layout>
+      <Layout title={`'${title}' by ${artist}`}>
         <Header>
           {hasTracks ? (
             <FavTracks show={showFavs}>

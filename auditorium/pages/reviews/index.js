@@ -46,7 +46,7 @@ const ReviewsPage = () => {
 
   if (loading)
     return (
-      <Layout>
+      <Layout title="reviews">
         <div style={{ display: 'grid', placeItems: 'center', height: '50vh' }}>
           <Loader />
         </div>
@@ -55,7 +55,7 @@ const ReviewsPage = () => {
   if (error) return <p>{error.message}</p>;
 
   return (
-    <Layout>
+    <Layout title="reviews">
       <Header onClick={() => history.push(`/reviews/${sys.id}`)}>
         <TitleInfo>
           <Band>{artist}</Band>

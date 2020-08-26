@@ -82,7 +82,7 @@ const ArticlePage = () => {
 
   if (articleLoading)
     return (
-      <Layout>
+      <Layout title="loading ...">
         <div
           style={{
             display: 'grid',
@@ -112,7 +112,7 @@ const ArticlePage = () => {
       : moment(publishingDate).fromNow();
 
   return (
-    <Layout>
+    <Layout title={`${headline}`}>
       <Container>
         <Title>{headline}</Title>
         <Separator />

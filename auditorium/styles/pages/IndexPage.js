@@ -4,13 +4,15 @@ export const Container = styled.div``;
 
 export const SiteName = styled.div`
   display: none;
+
   @media (max-width: 768px) {
     display: inline-block;
     color: ${({ theme }) => theme.primary};
     font-family: 'Staatliches', cursive;
     font-size: 4rem;
-    margin: 25px 0 -25px;
+    margin: 40px 0;
     position: relative;
+
     &::after {
       content: '';
       display: inline-block;
