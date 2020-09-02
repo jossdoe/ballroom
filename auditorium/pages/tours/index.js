@@ -14,7 +14,6 @@ import {
   ItemDates,
   FeatButton,
 } from 'styles/pages/ToursPage';
-
 // const GET_REVIEWS = `
 //   query Reviews {
 //     albumReviewCollection {
