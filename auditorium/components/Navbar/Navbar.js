@@ -53,6 +53,11 @@ const Navbar = () => {
                 <li>Reviews</li>
               </a>
             </Link>
+            <Link href="/tours">
+              <a className={getClassName('/tours')}>
+                <li>Tours</li>
+              </a>
+            </Link>
           </ul>
         </DesktopMenu>
         <MobileMenu>
