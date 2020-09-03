@@ -1,5 +1,7 @@
 import { useRouter } from 'next/router';
-// import useGQL from 'hooks/useGQL';
+import moment from 'moment';
+
+import useGQL from 'hooks/useGQL';
 import Layout from 'layout/Layout';
 import Loader from 'layout/Loader';
 import {
@@ -14,69 +16,83 @@ import {
   ItemDates,
   FeatButton,
 } from 'styles/pages/ToursPage';
-// const GET_REVIEWS = `
-//   query Reviews {
-//     albumReviewCollection {
-//       items {
-//         cover {
-//           url(transform: { width: 300, height: 300 })
-//         }
-//         artist
-//         title
-//         genre
-//         releaseDate
-//         rating
-//         author {
-//           name
-//         }
-//         sys {
-//           id
-//           firstPublishedAt
-//         }
-//       }
-//     }
-//   }
-// `;
+
+const GET_TOURS = `
+  query Tours {
+    tours {
+      id
+      name
+      band
+      shows {
+        date
+        city
+      }
+    }
+  }
+`;
 
 const ReviewsPage = () => {
-  // const history = useRouter();
-  // const { loading, error, data } = useGQL(GET_REVIEWS);
-  // const { artist, title, rating, author, cover, sys } =
-  //   data?.albumReviewCollection?.items[0] || {};
+  const history = useRouter();
+  const { loading, error, data } = useGQL(
+    GET_TOURS,
+    'http://api-backstage.herokuapp.com/graphql'
+  );
 
-  // if (loading)
-  //   return (
-  //     <Layout title="reviews">
-  //       <div style={{ display: 'grid', placeItems: 'center', height: '50vh' }}>
-  //         <Loader />
-  //       </div>
-  //     </Layout>
-  //   );
-  // if (error) return <p>{error.message}</p>;
+  if (loading)
+    return (
+      <Layout title="reviews">
+        <div style={{ display: 'grid', placeItems: 'center', height: '50vh' }}>
+          <Loader />
+        </div>
+      </Layout>
+    );
+  if (error) return <p>{error.message}</p>;
+
+  const tours = data.tours;
+  const featTour = tours[0];
+  const toursArray = tours.slice(1);
+
+  function calcDates(shows) {
+    const dates = shows
+      .map((show) => show.date)
+      .sort((a, b) => Date.parse(a) > Date.parse(b));
+
+    const firstDate = moment(dates[0]).format('DD/MM/YYYY');
+    const secondDate = moment(dates[dates.length - 1]).format('DD/MM/YYYY');
+
+    return `${firstDate} – ${secondDate}`;
+  }
 
   return (
     <Layout title="tours">
       <Container>
         <Featured>
-          <FeatName>FeatName</FeatName>
-          <FeatBand>FeatBand live</FeatBand>
-          <FeatDates>11/04/20 – 19/04/20</FeatDates>
-          <FeatButton>See Shows</FeatButton>
+          <FeatName>{featTour.name}</FeatName>
+          <FeatBand>{featTour.band}</FeatBand>
+          <FeatDates>{calcDates(featTour.shows)}</FeatDates>
+          <FeatButton onClick={() => history.push(`/tours/${featTour.id}`)}>
+            See Shows
+          </FeatButton>
         </Featured>
         <TourList>
-          <TourItem>
-            <div
-              style={{
-                flex: '1',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'flex-start',
-              }}
+          {toursArray.map((tour) => (
+            <TourItem
+              key={tour.id}
+              onClick={() => history.push(`/tours/${tour.id}`)}
             >
-              <ItemBand>ItemBand</ItemBand>
-            </div>
-            <ItemDates>11/04/20 – 19/04/20</ItemDates>
-          </TourItem>
+              <div
+                style={{
+                  flex: '1',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'flex-start',
+                }}
+              >
+                <ItemBand>{tour.band}</ItemBand>
+              </div>
+              <ItemDates>{calcDates(tour.shows)}</ItemDates>
+            </TourItem>
+          ))}
         </TourList>
       </Container>
     </Layout>
