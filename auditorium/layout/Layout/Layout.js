@@ -12,6 +12,8 @@ const Layout = ({ children, title = null }) => (
       <title>{title ? `${title} • ballroom` : `ballroom`}</title>
       <meta charSet="utf-8" />
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      <meta property="og:image" content="/static/ballroomBanner.png" />
+      <meta name="twitter:image" content="/static/ballroomBanner.png" />
       <link rel="shortcut icon" href="/static/favicon.ico" />
       <link
         href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,400;0,700;1,400;1,700&display=swap"
